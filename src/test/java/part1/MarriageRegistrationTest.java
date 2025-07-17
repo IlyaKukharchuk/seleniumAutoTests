@@ -39,8 +39,6 @@ public class MarriageRegistrationTest {
 
     @Test(priority = 2, dependsOnMethods = "testEnterAsUser")
     public void testFillMarriageForm() throws InterruptedException {
-        Thread.sleep(500);
-
         // Данные заявителя
         // Находим все поля формы
         WebElement surnameInput = driver.findElement(By.xpath("//input[@placeholder='Введите фамилию (минимум 2 символа)']"));
