@@ -1,4 +1,4 @@
-package part1;
+package e2e;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,8 +26,7 @@ public class MarriageRegistrationTest {
     }
 
     @Test(priority = 1)
-    public void testEnterAsUser() {
-        // Ждем и кликаем кнопку "Войти как пользователь"
+    public void testFillMarriageForm() throws InterruptedException {
         WebElement enterAsUserButton = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div//button[1]")));
         enterAsUserButton.click();
@@ -35,10 +34,7 @@ public class MarriageRegistrationTest {
         // Ждем появления формы регистрации
         wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//input[contains(@id,'TextInputField')]")));
-    }
 
-    @Test(priority = 2, dependsOnMethods = "testEnterAsUser")
-    public void testFillMarriageForm() throws InterruptedException {
         // Данные заявителя
         // Находим все поля формы
         WebElement surnameInput = driver.findElement(By.xpath("//input[@placeholder='Введите фамилию (минимум 2 символа)']"));
