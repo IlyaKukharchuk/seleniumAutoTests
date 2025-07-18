@@ -32,7 +32,7 @@ public class ApplicationAdministrationTest extends AdminTest {
     @BeforeMethod
     public void enterToAdminTablePage() {
         count++;
-        if (count > 1){
+        if (count > 1){ // Т.к. самый первый клик происходит при инициализации AdminTest (в @BeforeClass)
             System.out.println("clickEnterAsAdminButton");
             homePage.clickEnterAsAdminButton();
         }
