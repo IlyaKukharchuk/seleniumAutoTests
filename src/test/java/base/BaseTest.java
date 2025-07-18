@@ -1,6 +1,7 @@
 package base;
 
 import by.louegroove.seleniumfreecodecamp.pages.BasePage;
+import by.louegroove.seleniumfreecodecamp.pages.HomePage;
 import by.louegroove.seleniumfreecodecamp.pages.adminPage.ApplicationAdministrationPage;
 import by.louegroove.seleniumfreecodecamp.pages.adminPage.RegistrationDetailsPage;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,8 @@ import java.time.Duration;
 public class BaseTest {
     protected WebDriver driver;
     protected BasePage basePage;
-    protected RegistrationDetailsPage registrationDetailsPage;
+    protected HomePage homePage;
+
     private final String VALID_USERNAME = "user";
     private final String VALID_PASSWORD = "senlatest";
     @BeforeClass
@@ -26,7 +28,7 @@ public class BaseTest {
         driver.get("https://" + VALID_USERNAME + ":" + VALID_PASSWORD + "@regoffice.senla.eu/");
         basePage = new BasePage();
         basePage.setDriver(driver);
-        registrationDetailsPage = new RegistrationDetailsPage();
+        homePage = new HomePage();
     }
     @AfterClass
     public void cleanUp() {

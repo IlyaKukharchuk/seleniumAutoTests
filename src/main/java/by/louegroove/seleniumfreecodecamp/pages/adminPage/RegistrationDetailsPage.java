@@ -12,7 +12,6 @@ public class RegistrationDetailsPage extends BasePage {
     private By passportField = By.xpath("//label[contains(text(), 'Номер паспорта')]/following::input[1]");
     private By birthdayField = By.xpath("//label[contains(text(), 'Дата рождения')]/following::input[1]");
     private By nextButton = By.xpath("//div[contains(@class, 'MuiDialogActions-root')]//button[2]");
-    private By enterAsUserButton = By.xpath("//div//button[1]");
 
 
     public void setSurnameField(String surname) {
@@ -38,9 +37,10 @@ public class RegistrationDetailsPage extends BasePage {
     public void setBirthdayField(String birthday) {
         set(birthdayField, birthday);
     }
-    public void clickEnterAsUserButton() {
-        click(enterAsUserButton);
-    }
+
+    private By welcomeText = By.xpath("//h2[contains(@style, MuiTypography-root)]//span[contains(text(), 'Вы вошли как')]//b[contains(text(), 'Aдминистратор')]");
+
+
 
     public ApplicationAdministrationPage clickNextButton() {
         click(nextButton);
@@ -49,6 +49,10 @@ public class RegistrationDetailsPage extends BasePage {
     public boolean nextButtonIsDisabled() {
         return find(nextButton).getAttribute("disabled") != null;
     }
+    public boolean isWelcomeTextDisplayed(){
+        return find(welcomeText).isDisplayed();
+    }
+
     public ApplicationAdministrationPage insertRegDetails(String surname, String name, String middlename, String phone,String passport,String birthday){
         setSurnameField(surname);
         setNameField(name);
