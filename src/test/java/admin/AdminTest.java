@@ -13,13 +13,10 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class AdminTest extends BaseTest {
-    WebDriverWait wait;
     protected RegistrationDetailsPage registrationDetailsPage;
 
     @BeforeClass
     public void startUp() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-
         registrationDetailsPage = homePage.clickEnterAsAdminButton();
 //         Ждем появления форм
         wait.until(ExpectedConditions.visibilityOfElementLocated(

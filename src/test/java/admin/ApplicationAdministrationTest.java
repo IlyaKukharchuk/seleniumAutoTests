@@ -16,7 +16,6 @@ import java.time.Duration;
 public class ApplicationAdministrationTest extends AdminTest {
     WebDriverWait wait;
     private ApplicationAdministrationPage applicationAdministrationPage;
-    private int count = 0;
     @BeforeClass
     public void loginAsAdmin() throws InterruptedException {
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -31,11 +30,10 @@ public class ApplicationAdministrationTest extends AdminTest {
     }
     @BeforeMethod
     public void enterToAdminTablePage() {
-        count++;
-        if (count > 1){ // Т.к. самый первый клик происходит при инициализации AdminTest (в @BeforeClass)
-            System.out.println("clickEnterAsAdminButton");
+        if (!skipInitialAdminButtonClick) {
             homePage.clickEnterAsAdminButton();
         }
+        skipInitialAdminButtonClick = true;
     }
 
     @AfterMethod
@@ -48,8 +46,6 @@ public class ApplicationAdministrationTest extends AdminTest {
 
     @Test
     public void testPresenceOfApplicationTable() throws InterruptedException {
-        System.out.println("testPresenceOfApplicationTable");
-
         wait.until(ExpectedConditions.visibilityOf(applicationAdministrationPage.getApplicationsTable()));
         Assert.assertTrue(applicationAdministrationPage.isApplicationsTableDisplayed(),
                 "Таблица заявок должна быть видимой");
@@ -57,7 +53,6 @@ public class ApplicationAdministrationTest extends AdminTest {
 
     @Test
     public void testLikeButton() throws InterruptedException {
-        System.out.println("testLikeButton");
         wait.until(ExpectedConditions.elementToBeClickable(applicationAdministrationPage.getLikeButton()));
         applicationAdministrationPage.clickLikeButton();
         wait.until(ExpectedConditions.textToBePresentInElement(
@@ -67,7 +62,6 @@ public class ApplicationAdministrationTest extends AdminTest {
 
     @Test
     public void testDislikeButton() throws InterruptedException {
-        System.out.println("testDislikeButton");
         wait.until(ExpectedConditions.elementToBeClickable(applicationAdministrationPage.getDislikeButton()));
         applicationAdministrationPage.clickDislikeButton();
         wait.until(ExpectedConditions.textToBePresentInElement(
