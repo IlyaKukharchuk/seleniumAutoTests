@@ -27,11 +27,31 @@ public class TableRowElement {
     private WebElement rejectButton;
 
     // Геттеры
-    public WebElement getNumberCell() { return numberCell; }
-    public WebElement getApplicantCell() { return applicantCell; }
-    public WebElement getTypeCell() { return typeCell; }
-    public WebElement getTimeCell() { return timeCell; }
-    public WebElement getStatusCell() { return statusCell; }
-    public WebElement getApproveButton() { return approveButton; }
-    public WebElement getRejectButton() { return rejectButton; }
+    public WebElement getNumberCell() {
+        return numberCell;
+    }
+
+    public WebElement getApplicantCell() {
+        return applicantCell;
+    }
+
+    public WebElement getTypeCell() {
+        return typeCell;
+    }
+
+    public WebElement getTimeCell() {
+        return timeCell;
+    }
+
+    public WebElement getStatusCell() {
+        return statusCell;
+    }
+
+    public WebElement getApproveButton() {
+        return approveButton;
+    }
+
+    public WebElement getRejectButton() {
+        return rejectButton;
+    }
 }

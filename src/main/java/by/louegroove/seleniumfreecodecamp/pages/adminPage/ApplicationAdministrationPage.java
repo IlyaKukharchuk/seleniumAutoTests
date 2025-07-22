@@ -12,21 +12,22 @@ public class ApplicationAdministrationPage extends BasePage {
     private By applicationStatus = By.xpath("(  //tr[1]//td[contains(@class, 'MuiTableCell-root')])[5]");
     private By applicationsTable = By.xpath("//table[contains(@class, 'MuiTable-root')]");
 
-
-
-    public boolean isApplicationsTableDisplayed(){
+    public boolean isApplicationsTableDisplayed() {
         return find(applicationsTable).isDisplayed();
     }
 
     public String getStatus() {
         return find(applicationStatus).getText();
     }
+
     public WebElement getApplicationStatus() {
         return find(applicationStatus);
     }
+
     public void clickDislikeButton() {
         click(dislikeButton);
     }
+
     public void clickLikeButton() {
         click(likeButton);
     }
@@ -42,6 +43,7 @@ public class ApplicationAdministrationPage extends BasePage {
     public void clickCloseButton() {
         click(closeButton);
     }
+
     public void clickRefreshButton() {
         click(refreshButton);
     }

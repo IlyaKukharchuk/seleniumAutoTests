@@ -2,7 +2,6 @@ package by.louegroove.seleniumfreecodecamp.pages.adminPage;
 
 import by.louegroove.seleniumfreecodecamp.pages.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class RegistrationDetailsPage extends BasePage {
     private By surnameField = By.xpath("//label[contains(text(), 'Фамилия')]/following::input[1]");
@@ -40,20 +39,20 @@ public class RegistrationDetailsPage extends BasePage {
 
     private By welcomeText = By.xpath("//h2[contains(@style, MuiTypography-root)]//span[contains(text(), 'Вы вошли как')]//b[contains(text(), 'Aдминистратор')]");
 
-
-
     public ApplicationAdministrationPage clickNextButton() {
         click(nextButton);
         return new ApplicationAdministrationPage();
     }
+
     public boolean nextButtonIsDisabled() {
         return find(nextButton).getAttribute("disabled") != null;
     }
-    public boolean isWelcomeTextDisplayed(){
+
+    public boolean isWelcomeTextDisplayed() {
         return find(welcomeText).isDisplayed();
     }
 
-    public ApplicationAdministrationPage insertRegDetails(String surname, String name, String middlename, String phone,String passport,String birthday){
+    public ApplicationAdministrationPage insertRegDetails(String surname, String name, String middlename, String phone, String passport, String birthday) {
         setSurnameField(surname);
         setNameField(name);
         setMiddlenameField(middlename);
