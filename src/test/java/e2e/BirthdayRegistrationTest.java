@@ -2,6 +2,7 @@ package e2e;
 
 import base.BaseTest;
 import by.louegroove.seleniumfreecodecamp.valueobjects.ApplicantVO;
+import by.louegroove.seleniumfreecodecamp.valueobjects.BirthDetailsVO;
 import by.louegroove.seleniumfreecodecamp.valueobjects.CitizenVO;
 import by.louegroove.seleniumfreecodecamp.valueobjects.MarriageDetailsVO;
 import org.openqa.selenium.By;
@@ -25,19 +26,18 @@ public class BirthdayRegistrationTest extends BaseTest {
                 "22062007", "12345678", "м", "Ул. Московская, 54"
         );
 
-        MarriageDetailsVO marriageDetails = new MarriageDetailsVO(
-                "22222222", "Малахов",
-                "Иванов", "Андрей", "Иванович",
-                "33112004", "12345678"
+        BirthDetailsVO birthDetailsVO = new BirthDetailsVO(
+                "Ул. Московская, 54", "Анита",
+                "Иван", "Марья", "Иоанн"
         );
 
         // Заполнение форм
         fillApplicantForm(applicant);
         click(By.xpath("//div[contains(@class, 'MuiDialogActions-root')]//button[2]"));
-        selectMarriageService();
+        selectService();
         fillCitizenForm(citizen);
         click(By.xpath("//div[contains(@class, 'MuiDialogActions-root')]//button[3]"));
-        fillMarriageDetailsForm(marriageDetails);
+        fillBirthDetailsForm(birthDetailsVO);
         click(By.xpath("//div[contains(@class, 'MuiDialogActions-root')]//button[3]"));
 
         // Проверка статуса
@@ -45,7 +45,7 @@ public class BirthdayRegistrationTest extends BaseTest {
     }
 
     private void clickEnterAsUserButton() {
-        driver.findElement(By.xpath("//div//button[1]")).click();
+        driver.findElement(By.xpath("//div//button[2]")).click();
     }
 
     private void fillApplicantForm(ApplicantVO applicant) {
@@ -57,7 +57,7 @@ public class BirthdayRegistrationTest extends BaseTest {
         type(By.xpath("//input[@placeholder='Введите адрес прописки']"), applicant.getAddress());
     }
 
-    private void selectMarriageService() {
+    void selectService() {
         click(By.xpath("//button[contains(text(), 'Регистрация брака')]"));
     }
 
@@ -71,14 +71,12 @@ public class BirthdayRegistrationTest extends BaseTest {
         type(By.xpath("//input[@placeholder='Введите адрес прописки']"), citizen.getAddress());
     }
 
-    private void fillMarriageDetailsForm(MarriageDetailsVO details) {
-        type(By.xpath("//label[contains(text(), 'Дата регистрации')]/following::input[1]"), details.getRegistrationDate());
-        type(By.xpath("//label[contains(text(), 'Новая фамилия')]/following::input[1]"), details.getNewSurname());
-        type(By.xpath("//label[contains(text(), 'Фамилия супруга/и')]/following::input[1]"), details.getSpouseSurname());
-        type(By.xpath("//label[contains(text(), 'Имя супруга/и')]/following::input[1]"), details.getSpouseName());
-        type(By.xpath("//label[contains(text(), 'Отчество супруга/и')]/following::input[1]"), details.getSpouseMiddleName());
-        type(By.xpath("//label[contains(text(), 'Дата рождения супруга/и')]/following::input[1]"), details.getSpouseBirthDate());
-        type(By.xpath("//label[contains(text(), 'Номер паспорта супруга/и')]/following::input[1]"), details.getSpousePassport());
+    private void fillBirthDetailsForm(BirthDetailsVO details) {
+        type(By.xpath("//label[contains(text(), 'Место рождения')]/following::input[1]"), details.getBirthAddress());
+        type(By.xpath("//label[contains(text(), 'Мать')]/following::input[1]"), details.getMother());
+        type(By.xpath("//label[contains(text(), 'Отец')]/following::input[1]"), details.getFather());
+        type(By.xpath("//label[contains(text(), 'Бабушка')]/following::input[1]"), details.getGrandma());
+        type(By.xpath("//label[contains(text(), 'Дедушка')]/following::input[1]"), details.getGrandpa());
     }
 
     private String getApplicationStatus() {
