@@ -14,6 +14,5 @@ public class RegistrationDetailsTest extends AdminTest {
         registrationDetailsPage.setPassportField("12345678");
         registrationDetailsPage.setBirthdayField("22011994");
         Assert.assertFalse(registrationDetailsPage.nextButtonIsDisabled());
-        registrationDetailsPage.clickNextButton();
     }
 }

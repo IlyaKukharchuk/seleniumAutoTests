@@ -14,6 +14,5 @@ public class HomePage extends BasePage{
     }
     public void clickEnterAsUserButton() {
         click(enterAsUserButton);
-        //return new ApplicationAdministrationPage();
     }
 }

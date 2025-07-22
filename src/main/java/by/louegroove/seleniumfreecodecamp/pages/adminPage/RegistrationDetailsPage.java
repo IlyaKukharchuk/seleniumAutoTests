@@ -53,14 +53,13 @@ public class RegistrationDetailsPage extends BasePage {
         return find(welcomeText).isDisplayed();
     }
 
-    public ApplicationAdministrationPage insertRegDetails(String surname, String name, String middlename, String phone,String passport,String birthday) throws InterruptedException {
+    public ApplicationAdministrationPage insertRegDetails(String surname, String name, String middlename, String phone,String passport,String birthday){
         setSurnameField(surname);
         setNameField(name);
         setMiddlenameField(middlename);
         setPhoneField(phone);
         setPassportField(passport);
         setBirthdayField(birthday);
-        Thread.sleep(200);
         return clickNextButton();
     }
 }

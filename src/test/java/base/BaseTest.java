@@ -15,7 +15,7 @@ public class BaseTest {
     protected static WebDriverWait wait;
     protected BasePage basePage;
     protected HomePage homePage;
-    protected static boolean skipInitialAdminButtonClick = false;
+    protected static boolean skipInitialAdminButtonClick = true;
 
     private final String VALID_USERNAME = "user";
     private final String VALID_PASSWORD = "senlatest";
@@ -24,6 +24,8 @@ public class BaseTest {
     public void setUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
         // Авторизация через URL
